@@ -6,4 +6,8 @@
 
 
 
+  <ItemGroup>
+    <Folder Include="Views\Info\" />
+    <Folder Include="Views\New\" />
+  </ItemGroup>
 </Project>
