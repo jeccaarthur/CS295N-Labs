@@ -31,7 +31,7 @@ namespace JeccaArthurSite.Controllers
         public IActionResult Contact()
         {
             return View();
-        }
+        }     
 
         public IActionResult Privacy()
         {

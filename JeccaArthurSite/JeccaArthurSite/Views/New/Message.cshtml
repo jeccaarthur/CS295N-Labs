@@ -1,0 +1,39 @@
+﻿@model Message
+@{
+    ViewData["Title"] = "Message";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Send a Message</h1>
+</div>
+
+<div class="container text-center">
+    <form method="post">
+        <label asp-for="Sender.Name">Your Name:</label>
+        <input asp-for="Sender.Name" />
+        <br />
+    
+        <label asp-for="Recipient.Name">Send message to:</label>
+        <input asp-for="Recipient.Name" />
+        <br />
+    
+        <label asp-for="Subject">Subject:</label>
+        <input asp-for="Subject" />
+        <br />
+    
+        <label asp-for="Body">Message:</label>
+        <input asp-for="Body" />
+        <br />
+    
+        <label asp-for="Date">Date:</label>
+        <input asp-for="Date" />
+        <br /><br />
+    
+        <button type="submit">Submit Message</button>
+    </form>
+</div>
+
+<p>
+    Sender:
+    @Model.Sender.Name;
+</p>
