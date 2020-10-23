@@ -14,12 +14,7 @@ namespace JeccaArthurSite.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            Message model = new Message();
-            User sender = new User();
-            User recipient = new User();
-            model.Sender = sender;
-            model.Recipient = recipient;
-            return View(model);
+            return View();
         }
 
         public IActionResult New()
@@ -30,7 +25,12 @@ namespace JeccaArthurSite.Controllers
         // invoke the view with a form for entering a message
         public IActionResult Message()
         {
-            return View();
+            Message model = new Message();
+            User sender = new User();
+            User recipient = new User();
+            model.Sender = sender;
+            model.Recipient = recipient;
+            return View(model);
         }
 
         public IActionResult SingleView(Message model)
