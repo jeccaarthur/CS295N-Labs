@@ -8,6 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Views\Info\" />
-    <Folder Include="Views\New\" />
+    <Folder Include="Views\Events\" />
   </ItemGroup>
 </Project>

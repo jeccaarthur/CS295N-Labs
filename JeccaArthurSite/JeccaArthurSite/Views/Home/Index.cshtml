@@ -2,15 +2,23 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Community Page</h1>
-    <p>This website will be a community page when it's further built out.</p>
+    <div class="text-center">
+        <h1 class="display-4">Welcome to Winterfell</h1>
+        <p>Explore the beauty of the North.</p>
 
-    @* link to history page *@
-    <a asp-controller="Home" asp-action="History">Community History</a>
+        <br />
 
-    <br />
+        @* link to contact page *@
+        <a asp-controller="Home" asp-action="Contact">Contact</a>
 
-    @* link to contact page *@
-    <a asp-controller="Home" asp-action="Contact">Contact</a>
-</div>
+        <br />
+
+        @* link to message page *@
+        <a asp-controller="Home" asp-action="Message">Send a Raven</a>
+
+        <br />
+
+        @* link to single view page *@
+        <a asp-controller="Home" asp-action="MessageResults">View Your Raven</a>
+
+    </div>

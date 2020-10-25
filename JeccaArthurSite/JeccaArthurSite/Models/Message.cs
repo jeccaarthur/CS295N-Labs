@@ -1,5 +1,5 @@
 ﻿using System;
-namespace JeccaArthurSite.Models
+namespace Winterfell.Models
 {
     public class Message
     {
