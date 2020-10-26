@@ -34,6 +34,7 @@ namespace Winterfell.Controllers
             return View();
         }
 
+        // return form input
         [HttpPost]
         public IActionResult Message(Message model)
         {
