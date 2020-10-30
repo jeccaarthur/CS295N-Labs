@@ -55,22 +55,22 @@
 
 
 <!-- MESSAGE OUTPUT -->
-<div class="mx-auto p-5">
-    <div class="card card-body mx-auto py-3">
         @if (Model != null)
         {
-            <div class="container messageOutput">
-                <div class="row text-center">
-                    <h2>Your Message</h2>
+            <div class="mx-auto p-5">
+                <div class="card card-body mx-auto py-3">
+                    <div class="container messageOutput">
+                        <div class="row text-center">
+                            <h2>Your Message</h2>
+                        </div>
+                        <div class="row p-2"><span class="mr-2"><strong>Sender: </strong></span>@Model.Sender.Name</div>
+                        <div class="row p-2"><span class="mr-2"><strong>Recipient: </strong></span>@Model.Recipient.Name</div>
+                        <div class="row p-2"><span class="mr-2"><strong>Subject: </strong></span>@Model.Subject</div>
+                        <div class="row p-2"><span class="mr-2"><strong>Message: </strong></span>@Model.Body</div>
+                        <div class="row p-2"><span class="mr-2"><strong>Date: </strong></span>@Model.Date</div>
+                        <br />
+                    </div>
                 </div>
-                <div class="row p-2"><span class="mr-2"><strong>Sender: </strong></span>@Model.Sender.Name</div>
-                <div class="row p-2"><span class="mr-2"><strong>Recipient: </strong></span>@Model.Recipient.Name</div>
-                <div class="row p-2"><span class="mr-2"><strong>Subject: </strong></span>@Model.Subject</div>
-                <div class="row p-2"><span class="mr-2"><strong>Message: </strong></span>@Model.Body</div>
-                <div class="row p-2"><span class="mr-2"><strong>Date: </strong></span>@Model.Date</div>
-                <br />
             </div>
         }
-    </div>
-</div>
-<!-- END MESSAGE OUTPUT -->
+            <!-- END MESSAGE OUTPUT -->
