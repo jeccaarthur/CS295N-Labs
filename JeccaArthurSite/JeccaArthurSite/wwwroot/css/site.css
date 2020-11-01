@@ -94,6 +94,14 @@ body {
 }
 
 
+/* nav logo */
+.nav-logo {
+    display: inline-block;
+    background: transparent;
+    background-color: transparent;
+    margin-right: 10px;
+    filter: drop-shadow(0 0 0.05rem silver);
+}
 
 
 
