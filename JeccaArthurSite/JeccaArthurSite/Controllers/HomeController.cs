@@ -5,9 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using JeccaArthurSite.Models;
+using Winterfell.Models;
 
-namespace JeccaArthurSite.Controllers
+namespace Winterfell.Controllers
 {
     public class HomeController : Controller
     {
@@ -23,15 +23,29 @@ namespace JeccaArthurSite.Controllers
             return View();
         }
 
-        public IActionResult History()
+        public IActionResult Contact()
         {
             return View();
         }
 
-        public IActionResult Contact()
+        // invoke the view with a form for entering a message
+        public IActionResult Message()
         {
             return View();
-        }     
+        }
+
+        // return form input
+        [HttpPost]
+        public IActionResult Message(Message model)
+        {
+            model.Date = DateTime.Now;
+            return View(model);
+        }
+
+        public IActionResult MessageResults(Message model)
+        {
+            return View(model);
+        }
 
         public IActionResult Privacy()
         {
