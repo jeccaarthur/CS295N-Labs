@@ -26,7 +26,7 @@ namespace Winterfell.Models
         {
             result1 = answer1 == "Direwolf" ? "Right" : "Wrong";
             result2 = answer2 == "Winter is coming" ? "Right" : "Wrong";
-            result3 = answer3 == "False" ? "Right" : "Wrong";
+            result3 = answer3 == "false" ? "Right" : "Wrong";
 
         }
     }
