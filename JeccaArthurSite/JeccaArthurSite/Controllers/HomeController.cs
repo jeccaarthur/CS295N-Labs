@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Winterfell.Models;
 
@@ -13,9 +14,15 @@ namespace Winterfell.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        MessageContext context;
+
+        // any controller that needs to access the db must have an instance of the context object
+        // passed to its constructor as a param (MessageContext c)
+        public HomeController(ILogger<HomeController> logger, MessageContext c)
         {
             _logger = logger;
+
+            context = c;
         }
 
         public IActionResult Index()
@@ -39,12 +46,23 @@ namespace Winterfell.Controllers
         public IActionResult Message(Message model)
         {
             model.Date = DateTime.Now;
+
+            // add the model to the database and save changes
+            context.Messages.Add(model);
+            context.SaveChanges();
+
             return View(model);
         }
 
-        public IActionResult MessageResults(Message model)
+        // gets data from database
+        public IActionResult Messages()
         {
-            return View(model);
+            // use var - implicit variable
+            var messageList = context.Messages.Include(message => message.Sender)
+                .Include(message => message.Recipient)
+                .ToList<Message>();
+
+            return View(messageList);
         }
 
         public IActionResult Privacy()
