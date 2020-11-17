@@ -24,7 +24,7 @@ namespace Winterfell
             services.AddRazorPages()
             .AddRazorRuntimeCompilation();
 
-            // add service for DbContext with SQLite
+            // add service for DbContext with SQLite - this is dependency injection
             services.AddDbContext<MessageContext>(options => options.UseSqlite(Configuration["Data:Messages:SQLiteConnection"]));
         }
 
