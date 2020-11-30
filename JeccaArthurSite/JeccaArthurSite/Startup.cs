@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Winterfell.Models;
+using System.Runtime.InteropServices;
 
 namespace Winterfell
 {
@@ -25,7 +26,19 @@ namespace Winterfell
             .AddRazorRuntimeCompilation();
 
             // add service for DbContext with SQLite - this is dependency injection
-            services.AddDbContext<MessageContext>(options => options.UseSqlite(Configuration["ConnectionStrings:SQLiteConnection"]));
+            // services.AddDbContext<MessageContext>(options => options.UseSqlite(Configuration["ConnectionStrings:SQLiteConnection"]));
+
+            // add if statement to support azure db
+            //if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            //{
+                services.AddDbContext<MessageContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:AzureSQLServerConnection"]));
+            //}
+            /*
+            else
+            {
+                services.AddDbContext<MessageContext>(options => options.UseSqlite(Configuration["ConnectionStrings:SQLiteConnection"]));
+            }
+            */
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
