@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace Winterfell.Models
 {
     public class Message
@@ -6,6 +7,8 @@ namespace Winterfell.Models
         public Message()
         {
         }
+
+        public int MessageID { get; set; }
 
         public User Sender { get; set; }
 
