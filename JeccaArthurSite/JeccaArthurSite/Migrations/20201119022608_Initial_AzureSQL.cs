@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Winterfell.Migrations
 {
-    public partial class Initial : Migration
+    public partial class Initial_AzureSQL : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,7 +12,7 @@ namespace Winterfell.Migrations
                 columns: table => new
                 {
                     UserID = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Username = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true)
                 },
@@ -26,7 +26,7 @@ namespace Winterfell.Migrations
                 columns: table => new
                 {
                     MessageID = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     SenderUserID = table.Column<int>(nullable: true),
                     RecipientUserID = table.Column<int>(nullable: true),
                     Subject = table.Column<string>(nullable: true),
