@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Winterfell.Models;
 using System.Runtime.InteropServices;
+using Winterfell.Repositories;
 
 namespace Winterfell
 {
@@ -39,6 +40,9 @@ namespace Winterfell
                 services.AddDbContext<MessageContext>(options => options.UseSqlite(Configuration["ConnectionStrings:SQLiteConnection"]));
             }
             */
+
+            // injects repository into any controller that has it specified in its constructor
+            services.AddTransient<IMessages, MessagesRepository>(); // specify repository interface, then repository
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
