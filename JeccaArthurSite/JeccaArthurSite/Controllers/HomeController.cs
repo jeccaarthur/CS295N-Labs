@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Winterfell.Models;
+using Winterfell.Repositories;
 
 namespace Winterfell.Controllers
 {
@@ -14,15 +15,15 @@ namespace Winterfell.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        MessageContext context;
+        IMessages repository;
 
         // any controller that needs to access the db must have an instance of the context object
         // passed to its constructor as a param (MessageContext c)
-        public HomeController(ILogger<HomeController> logger, MessageContext c)
+        public HomeController(ILogger<HomeController> logger, IMessages r)
         {
             _logger = logger;
 
-            context = c;
+            repository = r;
         }
 
         public IActionResult Index()
@@ -43,24 +44,31 @@ namespace Winterfell.Controllers
 
         // return form input
         [HttpPost]
-        public IActionResult Message(Message model)
+        public IActionResult Message(Message message)
         {
-            model.Date = DateTime.Now;
+            message.Date = DateTime.Now;
 
+            /* added to repository method AddMessage
             // add the model to the database and save changes
             context.Messages.Add(model);
             context.SaveChanges();
+            */
 
-            return View(model);
+            repository.AddMessage(message);
+
+            return View(message);
         }
 
         // gets data from database
         public IActionResult Messages()
         {
             // use var - implicit variable
-            var messageList = context.Messages.Include(message => message.Sender)
-                .Include(message => message.Recipient)
-                .ToList<Message>();
+            // var messageList = context.Messages.Include(message => message.Sender)
+            //     .Include(message => message.Recipient)
+            //     .ToList<Message>();
+
+            // use repository instead of pulling directly from the db ^
+            List<Message> messageList = repository.Messages.ToList<Message>();
 
             return View(messageList);
         }
