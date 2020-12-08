@@ -33,7 +33,12 @@ namespace Winterfell.Repositories
             throw new NotImplementedException();
         }
 
-        public Message GetMessageBySender(User sender)
+        public Message GetMessageByDate(string date)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Message GetMessageBySender(string senderName)
         {
             throw new NotImplementedException();
         }

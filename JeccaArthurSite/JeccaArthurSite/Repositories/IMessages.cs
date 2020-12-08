@@ -9,6 +9,7 @@ namespace Winterfell.Repositories
         IQueryable<Message> Messages { get; }
         void AddMessage(Message message);
         void AddUser(Message message, User user);
-        Message GetMessageBySender(User sender);
+        Message GetMessageBySender(string senderName);
+        Message GetMessageByDate(string date);
     }
 }
