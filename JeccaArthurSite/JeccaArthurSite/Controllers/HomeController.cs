@@ -48,12 +48,6 @@ namespace Winterfell.Controllers
         {
             message.Date = DateTime.Now;
 
-            /* added to repository method AddMessage
-            // add the model to the database and save changes
-            context.Messages.Add(model);
-            context.SaveChanges();
-            */
-
             repository.AddMessage(message);
 
             return View(message);
@@ -62,15 +56,22 @@ namespace Winterfell.Controllers
         // gets data from database
         public IActionResult Messages()
         {
-            // use var - implicit variable
-            // var messageList = context.Messages.Include(message => message.Sender)
-            //     .Include(message => message.Recipient)
-            //     .ToList<Message>();
-
             // use repository instead of pulling directly from the db ^
             List<Message> messageList = repository.Messages.ToList<Message>();
 
             return View(messageList);
+        }
+
+        [HttpPost]
+        public IActionResult Messages(string senderName, string inputDate)
+        {
+            DateTime date = DateTime.Parse(inputDate);
+
+            var messages = (from m in repository.Messages
+                            where m.Sender.Name == senderName || m.Date == date
+                            select m).ToList();
+
+            return View(messages);
         }
 
         public IActionResult Privacy()
